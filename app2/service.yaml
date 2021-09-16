@@ -6,9 +6,7 @@ metadata:
   labels:
     asdf: qwer
     qwer: asdf
-    devops.gov.bc.ca/argocd-app-shared: shared2-app2-dev
   name: app2
-  namespace: iankwatts-dev
 spec:
   ports:
     - name: http

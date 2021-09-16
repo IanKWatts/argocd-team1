@@ -6,9 +6,7 @@ metadata:
     deployment.kubernetes.io/revision: "1"
   labels:
     asdf: qwer
-    devops.gov.bc.ca/argocd-app-shared: team1-app2-dev
   name: app2
-  namespace: iankwatts-dev
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -28,7 +26,7 @@ spec:
         app: app2
     spec:
       containers:
-        - image: image-registry.openshift-image-registry.svc:5000/iankwatts-tools/test10:latest
+        - image: image-registry.openshift-image-registry.svc:5000/iankwatts-tools/goodbyeworld:latest
           imagePullPolicy: Always
           name: app2
           ports:

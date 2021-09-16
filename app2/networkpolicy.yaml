@@ -4,9 +4,7 @@ kind: NetworkPolicy
 metadata:
   annotations: {}
   labels:
-    devops.gov.bc.ca/argocd-app-shared: team1-app2-dev
   name: app2-network-policy
-  namespace: iankwatts-dev
 spec:
   ingress:
     - ports:

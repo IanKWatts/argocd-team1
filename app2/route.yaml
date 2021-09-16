@@ -5,9 +5,7 @@ metadata:
   annotations: {}
   labels:
     asdf: qwer
-    devops.gov.bc.ca/argocd-app-shared: shared2-app2-dev
   name: app2
-  namespace: iankwatts-dev
 spec:
   host: app2-iankwatts-dev.apps.klab.devops.gov.bc.ca
   port:
