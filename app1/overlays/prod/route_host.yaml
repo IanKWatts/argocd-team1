@@ -1,0 +1,6 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: app1
+spec:
+  host: app1-iankwatts-prod.apps.klab.devops.gov.bc.ca

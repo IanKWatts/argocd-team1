@@ -6,7 +6,6 @@ metadata:
   labels:
     asdf: qwer
     qwer: asdf
-    devops.gov.bc.ca/argocd-app-shared: team1-app1-dev
   name: app1
 spec:
   ports:
