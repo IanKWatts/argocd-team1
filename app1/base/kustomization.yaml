@@ -1,0 +1,5 @@
+resources:
+- deployment.yaml
+- networkpolicy.yaml
+- route.yaml
+- service.yaml

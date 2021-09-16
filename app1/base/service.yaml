@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations: {}
+  labels:
+    asdf: qwer
+    qwer: asdf
+    devops.gov.bc.ca/argocd-app-shared: team1-app1-dev
+  name: app1
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 9999
+  selector:
+    app: app1
+  sessionAffinity: None
+  type: ClusterIP

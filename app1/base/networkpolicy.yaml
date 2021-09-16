@@ -1,0 +1,18 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations: {}
+  labels:
+    devops.gov.bc.ca/argocd-app-shared: team1-app1-dev
+  name: app1-network-policy
+spec:
+  ingress:
+    - ports:
+        - port: 9999
+          protocol: TCP
+    - from:
+        - podSelector: {}
+  podSelector: {}
+  policyTypes:
+    - Ingress

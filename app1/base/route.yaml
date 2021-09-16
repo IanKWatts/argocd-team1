@@ -1,0 +1,20 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations: {}
+  labels:
+    asdf: qwer
+    devops.gov.bc.ca/argocd-app-shared: team1-app1-dev
+  name: app1
+spec:
+  host: app1-iankwatts-dev.apps.klab.devops.gov.bc.ca
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: app1
+    weight: 100
+  wildcardPolicy: None
