@@ -7,7 +7,7 @@ metadata:
     asdf: qwer
   name: app2
 spec:
-  host: app2-iankwatts-dev.apps.klab.devops.gov.bc.ca
+  host: app2-iankwatts-test.apps.klab.devops.gov.bc.ca
   port:
     targetPort: http
   tls:
