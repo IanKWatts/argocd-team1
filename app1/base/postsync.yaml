@@ -15,11 +15,10 @@ spec:
         image: docker.io/bcgovdevops/utility-server:latest
         command:
           - "oc"
-          - "-n"
-          - "iankwatts-dev"
-          - "get"
-          - "pods"
-          - "&&"
-          - "date"
+          - "patch"
+          - "deployment"
+          - "app2"
+          - "-p"
+          - "{\"spec\": {\"template\": {\"metadata\": {\"annotations\": {\"vault.hashicorp.com/auth-path\": \"auth/k8s-silver\"}}}}}"
       restartPolicy: Never
   backoffLimit: 4
