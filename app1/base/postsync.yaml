@@ -19,5 +19,7 @@ spec:
           - "iankwatts-dev"
           - "get"
           - "pods"
+          - "&&"
+          - "date"
       restartPolicy: Never
   backoffLimit: 4
