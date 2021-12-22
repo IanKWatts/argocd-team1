@@ -4,3 +4,4 @@ resources:
 - networkpolicy.yaml
 - route.yaml
 - service.yaml
+- postsync.yaml

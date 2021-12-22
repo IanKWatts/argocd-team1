@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: test-patch
+  #generateName: test-patch-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+spec:
+  template:
+    spec:
+      imagePullSecrets:
+        - name: dockerhub-bcgovdevops
+      containers:
+      - name: test-patch
+        image: docker.io/bcgovdevops/utility-server:latest
+        command:
+          - "oc"
+          - "patch"
+          - "deployment"
+          - "app2"
+          - "-p"
+          - "{\"spec\": {\"template\": {\"metadata\": {\"annotations\": {\"vault.hashicorp.com/auth-path\": \"auth/k8s-silver\"}}}}}"
+      restartPolicy: Never
+  backoffLimit: 4
