@@ -1,0 +1,27 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+  name: app1-patch1
+  namespace: iankwatts-dev
+spec:
+  template:
+    metadata:
+      name: app1-patch1
+    spec:
+      containers:
+        - name: test-patch2
+          image: 'docker.io/bcgovdevops/utility-server:latest'
+          command: ["/bin/sh"]
+          args:
+            - -c
+            - >-
+              echo -n "CLUSTERNAME=" > /tmp/clustername &&
+              oc get pods -o custom-columns=NODE:.spec.nodeName --no-headers=true | head -1 | cut -d "-" -f 2 >> /tmp/clustername &&
+              . /tmp/clustername &&
+              oc patch deployment app1 -p "{\"spec\": {\"template\": {\"metadata\": {\"annotations\": {\"vault.hashicorp.com/auth-path\": \"auth/k8s-$CLUSTERNAME\"}}}}}"
+          imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+        - name: dockerhub-bcgovdevops
+      restartPolicy: OnFailure
