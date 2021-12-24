@@ -6,6 +6,7 @@ metadata:
   labels:
     asdf: qwer
     qwer: asdf
+    testing: ${clustername}
   name: app1
 spec:
   ports:
