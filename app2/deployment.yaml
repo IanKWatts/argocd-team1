@@ -26,7 +26,7 @@ spec:
         app: app2
     spec:
       containers:
-        - image: image-registry.openshift-image-registry.svc:5000/iankwatts-tools/goodbyeworld:latest
+        - image: docker.io/flicker/helloworld:latest
           imagePullPolicy: Always
           name: app2
           ports:
