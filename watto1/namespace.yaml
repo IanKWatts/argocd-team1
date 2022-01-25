@@ -1,0 +1,10 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: watto1
+  labels:
+    app: watto1
+    kubernetes.io/metadata.name: watto1
+spec:
+  finalizers:
+    - kubernetes
