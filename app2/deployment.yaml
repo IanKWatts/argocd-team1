@@ -25,6 +25,7 @@ spec:
       labels:
         app: app2
     spec:
+      serviceAccountName: default
       containers:
         - image: image-registry.openshift-image-registry.svc:5000/iankwatts-tools/goodbyeworld:latest
           imagePullPolicy: Always
