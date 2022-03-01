@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: test-patch2
-          image: https://artifacts.developer.gov.bc.ca/artifactory/plat-util-images/utility-server:latest
+          image: artifacts.developer.gov.bc.ca/artifactory/plat-util-images/utility-server:latest
           command: ["/bin/sh"]
           args:
             - -c
