@@ -9,10 +9,10 @@ spec:
   template:
     spec:
       imagePullSecrets:
-        - name: dockerhub-bcgovdevops
+        - name: artifactory-iankwatts
       containers:
       - name: test-patch
-        image: docker.io/bcgovdevops/utility-server:latest
+        image: https://artifacts.developer.gov.bc.ca/artifactory/plat-util-images/utility-server:latest
         command:
           - "oc"
           - "patch"

@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: test-patch2
-          image: 'docker.io/bcgovdevops/utility-server:latest'
+          image: https://artifacts.developer.gov.bc.ca/artifactory/plat-util-images/utility-server:latest
           command: ["/bin/sh"]
           args:
             - -c
@@ -23,5 +23,5 @@ spec:
               oc patch deployment app1 -p "{\"spec\": {\"template\": {\"metadata\": {\"annotations\": {\"vault.hashicorp.com/auth-path\": \"auth/k8s-$CLUSTERNAME\"}}}}}"
           imagePullPolicy: IfNotPresent
       imagePullSecrets:
-        - name: dockerhub-bcgovdevops
+        - name: artifactory-iankwatts
       restartPolicy: OnFailure
