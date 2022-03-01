@@ -1,5 +1,4 @@
 resources:
-- app1-patch1.yaml
 - deployment.yaml
 - networkpolicy.yaml
 - route.yaml
