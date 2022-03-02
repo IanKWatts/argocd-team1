@@ -6,6 +6,7 @@ metadata:
     deployment.kubernetes.io/revision: "1"
   labels:
     asdf: qwer
+    qwer: asdf
   name: app2
 spec:
   progressDeadlineSeconds: 600
