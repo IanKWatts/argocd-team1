@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: "59e31e"
+  name: "def234"
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "10"
@@ -10,7 +10,7 @@ spec:
     namespace: argocd
     server: 'https://kubernetes.default.svc'
   source:
-    path: "tenants/59e31e/"
+    path: "tenants/def234/"
     repoURL: "https://github.com/iankwatts/argocd-team1.git"
     targetRevision: "HEAD"
     directory:
