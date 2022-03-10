@@ -1,6 +1,0 @@
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: def234-vault
-  namespace: def234-dev
