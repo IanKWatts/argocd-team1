@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: storage-netapp-file-extended-quota
+  namespace: 59e31e-dev
+  labels:
+    environment: dev
+    name: "59e31e"
+    provisioned-by: argocd
+spec:
+  hard:
+    netapp-file-extended.storageclass.storage.k8s.io/persistentvolumeclaims: "0"
+    netapp-file-extended.storageclass.storage.k8s.io/requests.storage: 0

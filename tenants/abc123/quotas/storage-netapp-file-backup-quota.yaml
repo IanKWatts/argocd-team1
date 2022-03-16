@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: storage-netapp-file-backup-quota
+  namespace: 59e31e-dev
+  labels:
+    environment: dev
+    name: "59e31e"
+    provisioned-by: argocd
+spec:
+  hard:
+    netapp-file-backup.storageclass.storage.k8s.io/persistentvolumeclaims: "5"
+    netapp-file-backup.storageclass.storage.k8s.io/requests.storage: 32Gi
