@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ResourceQuota
 metadata:
   name: compute-best-effort-quota
-  namespace: abc123-dev-dev
+  namespace: abc123-dev
   labels:
     environment: dev
     name: "abc123-dev"

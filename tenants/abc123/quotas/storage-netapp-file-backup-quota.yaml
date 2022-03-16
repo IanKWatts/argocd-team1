@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ResourceQuota
 metadata:
   name: storage-netapp-file-backup-quota
-  namespace: abc123-dev-dev
+  namespace: abc123-dev
   labels:
     environment: dev
     name: "abc123-dev"

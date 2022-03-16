@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ResourceQuota
 metadata:
   name: compute-time-bound-quota
-  namespace: abc123-dev-dev
+  namespace: abc123-dev
   labels:
     environment: dev
     name: "abc123-dev"
