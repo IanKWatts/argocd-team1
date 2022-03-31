@@ -1,28 +1,53 @@
 ﻿# Argo CD Troubleshooting Guide
 
-<table of contents>
+## Table of Contents
+1. [Argo CD Service Definition](#argocd-service-definition)
+    1. [Summary](#summary)
+    2. [Service leads](#service-leads)
+        1. [Primary](#primary)
+        2. [Secondary](#secondary)
+    3. [Application details](#application-details)
+2. [Triage Process](#triage-process)
+    1. [Initial triage](#initial-triage)
+    2. [OpenShift platform issue](#openshift-platform-issue)
+3. [Diagnostic Steps](#diagnostic-steps)
+    1. [Argo CD UI is unavailable](#argocd-ui-is-unavailable)
+    2. [Argo CD UI is available, but can't log in](#ui-available-but-cant-log-in)
+        1. [Cluster-level instance](#cant-log-in-cluster)
+        2. [Shared instance](#cant-log-in-shared)
+    3. [Argo CD UI is available](#ui-available)
+        1. [Application statuses are showing as "Unknown"](#statuses-unknown)
+            1. [Cluster-level Argo CD](#status-unknown-cluster)
+            2. [Shared Argo CD](#status-unknown-cluster)
+        2. [Application synchronizations are failing](#syncs-failing)
+4. [Support Services](#support-services)
+    1. [Technical contacts](#technical-contacts)
+5. [Resources](#resources)
+    1. [Useful links](#useful-links)
+    2. [Glossary of terms](#glossary)
 
-## ARGOCD SERVICE DEFINITION
-### Summary
+
+## Argo CD Service Definition<a name="argocd-service-definition"></a>
+### Summary<a name="summary"></a>
 Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
 - third party software with custom developed components (operator and build/deploy pipelines)
 - operations and maintenance (patches, upgrades, config changes, features enablement)
 - user support, app integration's assistance
 
-### Service Leads
-#### Primary
+### Service Leads<a name="service-leads"></a>
+#### Primary<a name="primary"></a>
 - Name: Cailey Jones
 - Email: cailey.jones@gov.bc.ca
 - Cell #:
 - RC Handle: cailey.jones
 
-#### Secondary
+#### Secondary<a name="secondary"></a>
 - Name: Ian Watts
 - Email: ian@48thave.com
 - Cell #: 250-507-7854
 - RC Handle: ian.watts
 
-### Application Details
+### Application Details<a name="application-details"></a>
 - Cluster: ALL
 - Namespace: argocd, argocd-shared
 - Cluster-level instance of Argo CD
@@ -47,8 +72,8 @@ Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
 - Hosting model
     - One instance of Argo CD in each cluster for both the cluster-level and shared instances
 
-## Triage Process
-### Step 1
+## Triage Process<a name="triage-process"></a>
+### Initial Triage<a name="initial-triage"></a>
 - Is this related to OpenShift platform, ArgoCD, Vault or ArgoCD?
     - No?
         - Instruct to report in RocketChat #devops-operations
@@ -66,7 +91,7 @@ Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
         - Yes?
             - Skip to Step 2: Capture Project Details below
 - Move to specific application troubleshooting steps below
-#### OpenShift Platform Issue
+### OpenShift Platform Issue<a name="openshift-platform-issue"></a>
 - Ask caller to login to cluster console
     - Is the project hosted on Silver?
         - Yes?
@@ -90,8 +115,8 @@ Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
         - Instruct to report in RocketChat #devops-operations
         - No further action is needed by 7-7000.
 
-## Diagnostic Steps
-### Argo CD UI is unavailable
+## Diagnostic Steps<a name="diagnostic-steps"></a>
+### Argo CD UI is unavailable<a name="argocd-ui-is-unavailable"></a>
 Check the following critical resources in the 'argocd' or 'argocd-shared' namespace.
 1. Deployment: argocd-server
    1. Are the pods running?
@@ -104,24 +129,25 @@ Check the following critical resources in the 'argocd' or 'argocd-shared' namesp
    1. Note that the Redis service is not critical to the functioning of Argo CD.  "Redis is only used as a throw-away cache and can be lost. When lost, it will be rebuilt without loss of service."
    2. https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/
 
-### Argo CD UI is available, but can't log in
-#### Cluster-level instance
+### Argo CD UI is available, but can't log in<a name="ui-available-but-cant-log-in"></a>
+#### Cluster-level instance<a name="cant-log-in-cluster"></a>
 Access to the cluster-level instance of Argo CD is based on membership in the Keycloak group “argo_platform_admins” in the Realm “8gyaubgq”.
 - Check group membership for the given GitHub ID
 - Check availability of Keycloak
 
-#### Shared instance
+#### Shared instance<a name="cant-log-in-shared"></a>
 As with the cluster-level instance, access is based on the Keycloak group “argo_platform_admins”.
 
 User access to this instance is based on membership in a Keycloak group named “argocd_shared_licenseplate”, which grants write access, and “argocd_shared_licenseplate_readers”, which grants read-only access.  Project teams have the ability to manage membership in both of these groups by way of the “GitOpsTeam” custom resource definition.  For more information, see:
 https://github.com/BCDevOps/openshift-wiki/tree/master/docs/ArgoCD
+
 A user can only see the Projects that they have access to, as well as any Applications that are in those Projects.
 
-### Argo CD UI is available
-#### Application statuses are showing as "Unknown"
+### Argo CD UI is available<a name="ui-available"></a>
+#### Application statuses are showing as "Unknown"<a name="statuses-unknown"></a>
 Argo CD cannot read from the git repository that is listed as the Source Repository in the Application.  Access to the GitHub gitops repos is managed by an SSH key.
 
-##### Cluster-level Argo CD
+##### Cluster-level Argo CD<a name="status-unknown-cluster"></a>
 An SSH key is added as a Deploy Key in the GitHub repos (Settings --> Security --> Deploy keys).
 In Argo CD, the connection with the SSH key is added as a Credentials Template (Settings --> Repositories).  It is not possible to view the SSH key in the Argo CD UI, but if necessary an existing credentials template could be deleted and recreated.  To do so:
 - Click "Connect Repo Using SSH"
@@ -131,9 +157,9 @@ In Argo CD, the connection with the SSH key is added as a Credentials Template (
     - Because you will save this as a credentials template, do not include a specific repository name, just end the URL with "orgname/"
 - SSH private key data: Enter the private key of the SSH key pair
 - Click "Save as Credentials Template"
-Argo CD should now be able to read from the given repos.
 
-##### Shared Argo CD
+
+##### Shared Argo CD<a name="status-unknown-cluster"></a>
 On the GitHub side, read access to the repos is configured by way of the "GitOps-Readers" team, which includes the "RoboWitness" user.
 Each repo to which Argo CD requires read access is included in the repository list for the user.  For the shared Argo CD instances, the gitops repos are added to the team automatically by the Warden Operator.
 On the Argo CD side, access is configured in the same way as for the cluster-level instance:
@@ -146,12 +172,11 @@ SSH key in the Argo CD UI, but if necessary an existing credentials template cou
         - Because you will save this as a credentials template, do not include a specific repository name, just end the URL with "orgname/"
     - SSH private key data: Enter the private key of the SSH key pair
     - Click "Save as Credentials Template"
-Argo CD should now be able to read from the given repos.
 
-#### Application synchronizations are failing
+#### Application synchronizations are failing<a name="syncs-failing"></a>
 The log messages are generally quite helpful.  Click on the app in question and click either the "Sync Status" button or the link below "Last Sync Result".
 
-## SUPPORT SERVICES
+## Support Services<a name="support-services"></a>
 ### ArgoCD Support Contacts
 Argo CD is open-source software and is used without a license or paid support.
 
@@ -161,7 +186,7 @@ N/A
 ### Response / Resolution Times
 N/A
 
-### Technical Contacts
+### Technical Contacts<a name="technical-contacts"></a>
 Cailey Jones
 Ian Watts
 Shelly Han
@@ -170,8 +195,8 @@ Steven Barre
 ### Severity Definitions
 N/A
 
-## Resources
-### Useful links
+## Resources<a name="resources"></a>
+### Useful links<a name="useful-links"></a>
 - Platform Services Team's Supported Services Sheet
     - https://docs.google.com/spreadsheets/d/1pvaxCdYts1MeRv7bHP10a1yt_MGk6KpK/edit?usp=sharing&ouid=117522969697637793376&rtpof=true&sd=true
 - DevSecOps Escalation Flow
@@ -185,7 +210,7 @@ N/A
 - OpenShift Container Platform Service Definition
     - https://developer.gov.bc.ca/BC-Gov-PaaS-OpenShift-Platform-Service-Definition
 
-### Glossary of terms (*Critical)
+### Glossary of terms (\*Critical)<a name="glossary"></a>
 - Aqua:  Container scanning for vulnerabilities and deployment security enforcement solution for Kubernetes, Docker, OpenShift, Fargate, Lambd
 a, AWS & other container platforms.
 - ArgoCD: a declarative, GitOps continuous delivery tool for Kubernetes that product teams use to automate deployment of their apps.
