@@ -18,7 +18,7 @@
     3. [Argo CD UI is available](#ui-available)
         1. [Application statuses are showing as "Unknown"](#statuses-unknown)
             1. [Cluster-level Argo CD](#status-unknown-cluster)
-            2. [Shared Argo CD](#status-unknown-cluster)
+            2. [Shared Argo CD](#status-unknown-shared)
         2. [Application synchronizations are failing](#syncs-failing)
 4. [Support Services](#support-services)
     1. [Technical contacts](#technical-contacts)
@@ -159,7 +159,7 @@ In Argo CD, the connection with the SSH key is added as a Credentials Template (
 - Click "Save as Credentials Template"
 
 
-##### Shared Argo CD<a name="status-unknown-cluster"></a>
+##### Shared Argo CD<a name="status-unknown-shared"></a>
 On the GitHub side, read access to the repos is configured by way of the "GitOps-Readers" team, which includes the "RoboWitness" user.
 Each repo to which Argo CD requires read access is included in the repository list for the user.  For the shared Argo CD instances, the gitops repos are added to the team automatically by the Warden Operator.
 On the Argo CD side, access is configured in the same way as for the cluster-level instance:
@@ -187,10 +187,10 @@ N/A
 N/A
 
 ### Technical Contacts<a name="technical-contacts"></a>
-Cailey Jones
-Ian Watts
-Shelly Han
-Steven Barre
+- Cailey Jones
+- Ian Watts
+- Shelly Han
+- Steven Barre
 
 ### Severity Definitions
 N/A
@@ -210,18 +210,18 @@ N/A
 - OpenShift Container Platform Service Definition
     - https://developer.gov.bc.ca/BC-Gov-PaaS-OpenShift-Platform-Service-Definition
 
-### Glossary of terms (\*Critical)<a name="glossary"></a>
-- Aqua:  Container scanning for vulnerabilities and deployment security enforcement solution for Kubernetes, Docker, OpenShift, Fargate, Lambd
+### Glossary of terms<a name="glossary"></a>
+- **Aqua**: Container scanning for vulnerabilities and deployment security enforcement solution for Kubernetes, Docker, OpenShift, Fargate, Lambd
 a, AWS & other container platforms.
-- ArgoCD: a declarative, GitOps continuous delivery tool for Kubernetes that product teams use to automate deployment of their apps.
-- Artifactory: Artifactory provides cached access to a number of publicly available and secure repositories held by other organizations. Access to the remote (caching) repositories is currently available by default to anyone on the Silver or Gold Clusters.
-- CCM: Cluster Config Manager applies and enforces k8s objects used for managing the cluster and other core applications
-- DevHub: DevHub serves as a central information portal for developers looking for any content related to developing on the BC Gov DevOps Platform such as service definitions, manuals, pro-tips and self-help docs.  It is available at  https://developer.gov.bc.ca  The DevHub itself does not store any information but instead pulls it from various sources as mentioned above and enables searching through the content. At this moment, DevHub only supports access to public content, that is why we use Documize for the content that needs to be protected.
-- Documize: This open source content management tool used by the Platform Services Team for storing sensitive technical documentation that is not appropriate for the public space in GitHub. Access to the protected content in https://docs.developer.gov.bc.ca  is available to product teams using GitHub ID or IDIR after access has been manually granted to the user by the Platform Services Team.
-- EnterpriseDB Operator (EDB): EDB is a product providing High Availability capability for PostgreSQL clusters. Teams are required to purchase their own EDB license before using this service. The platform services team controls and maintains a cluster-wide version of the EDB operator in the Silver cluster of Openshift Platform which licensed teams can access from their apps via CRDs.
-- Mobile Signing Service (MSS): The Mobile Signing Service (MSS) allows teams developing mobile applications to sign said applications using BC Government’s signing key before publishing in Google Playstore and Apple AppStore.
-- Platform Services Registry: This service provides self-serve access for product teams to request provisioning of projects on the Openshift 4 Platform.
-- RocketChat: All in one communications platform: team collaboration, omnichannel engagement, DevOps and ChatOps. Access to RocketChat at https://chat.developer.gov.bc.ca is available either using GitHub ID (membership in GitHub’s BCDevOps org is required) or IDIR.
-- Sysdig Monitoring Service: This service enables product teams to build monitoring dashboards for their apps hosted on the Platform.
-- Vault: This secret management service is built using the Hashicorp Vault product and is used by product teams to secure, store, and tightly control access to tokens, passwords, certificates, API keys, and other secrets used in Platform apps.
+- **ArgoCD**: a declarative, GitOps continuous delivery tool for Kubernetes that product teams use to automate deployment of their apps.
+- **Artifactory**: Artifactory provides cached access to a number of publicly available and secure repositories held by other organizations. Access to the remote (caching) repositories is currently available by default to anyone on the Silver or Gold Clusters.
+- **CCM**: Cluster Config Manager applies and enforces k8s objects used for managing the cluster and other core applications
+- **DevHub**: DevHub serves as a central information portal for developers looking for any content related to developing on the BC Gov DevOps Platform such as service definitions, manuals, pro-tips and self-help docs.  It is available at  https://developer.gov.bc.ca  The DevHub itself does not store any information but instead pulls it from various sources as mentioned above and enables searching through the content. At this moment, DevHub only supports access to public content, that is why we use Documize for the content that needs to be protected.
+- **Documize**: This open source content management tool used by the Platform Services Team for storing sensitive technical documentation that is not appropriate for the public space in GitHub. Access to the protected content in https://docs.developer.gov.bc.ca  is available to product teams using GitHub ID or IDIR after access has been manually granted to the user by the Platform Services Team.
+- **EnterpriseDB Operator (EDB)**: EDB is a product providing High Availability capability for PostgreSQL clusters. Teams are required to purchase their own EDB license before using this service. The platform services team controls and maintains a cluster-wide version of the EDB operator in the Silver cluster of Openshift Platform which licensed teams can access from their apps via CRDs.
+- **Mobile Signing Service (MSS)**: The Mobile Signing Service (MSS) allows teams developing mobile applications to sign said applications using BC Government’s signing key before publishing in Google Playstore and Apple AppStore.
+- **Platform Services Registry**: This service provides self-serve access for product teams to request provisioning of projects on the Openshift 4 Platform.
+- **RocketChat**: All in one communications platform: team collaboration, omnichannel engagement, DevOps and ChatOps. Access to RocketChat at https://chat.developer.gov.bc.ca is available either using GitHub ID (membership in GitHub’s BCDevOps org is required) or IDIR.
+- **Sysdig Monitoring Service**: This service enables product teams to build monitoring dashboards for their apps hosted on the Platform.
+- **Vault**: This secret management service is built using the Hashicorp Vault product and is used by product teams to secure, store, and tightly control access to tokens, passwords, certificates, API keys, and other secrets used in Platform apps.
 
