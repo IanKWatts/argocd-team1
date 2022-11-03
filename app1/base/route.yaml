@@ -5,6 +5,7 @@ metadata:
   annotations: {}
   labels:
     asdf: qwer
+    qwer: wert
   name: app1
 spec:
   host: app1-iankwatts-dev.apps.klab.devops.gov.bc.ca
