@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations: {}
+  labels:
+    asdf: qwer
+    qwer: asdf
+  name: app-rogue
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 9999
+  selector:
+    app: app-rogue
+  sessionAffinity: None
+  type: ClusterIP
