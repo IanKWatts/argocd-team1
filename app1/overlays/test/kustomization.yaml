@@ -2,4 +2,3 @@ bases:
 - ../../base
 patchesStrategicMerge:
 - replica_count.yaml
-- route_host.yaml

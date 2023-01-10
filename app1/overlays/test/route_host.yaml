@@ -1,8 +1,0 @@
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  name: app1
-  labels:
-    sdfg: dfgh
-spec:
-  host: app1-iankwatts-test.apps.klab.devops.gov.bc.ca
