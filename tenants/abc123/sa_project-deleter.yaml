@@ -1,0 +1,7 @@
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: project-deleter
+  namespace: default
+  annotations:
+    description: "Used by the platform registry app to remove project sets after their manifests have been removed from the repo monitored by Argo CD."
