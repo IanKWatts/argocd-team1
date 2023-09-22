@@ -5,11 +5,13 @@ on:
     types:
       - closed
     paths:
-      - "testing"
+      - "testing/*"
 
 jobs:
   testing:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "this is a test"
-
+      - name: Test file deletion
+        env:
+          BRANCH_NAME: ${{ github.head_ref }}
+        run: echo "this is a test:${BRANCH_NAME}"
