@@ -5,8 +5,7 @@ app = Flask(__name__)
 
 @app.route('/load/<int:workers>')
 def load(workers):
-	#os.system("stress --cpu {workers} --timeout 10")
-	os.system("date")
+	os.system("stress --cpu {workers} --timeout 10")
 	return "CPU load with {workers} workers started."
 
 if __name__ == '__main__':
